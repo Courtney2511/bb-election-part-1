@@ -8,15 +8,13 @@ $(document).ready(function pollResults(){
   }).done(function(responseData){
     var candidateJSON = responseData;
     var candidateList = candidateJSON["candidates"];
-
     $('#results').empty();
 
-    for(i=0; i<3; i++) {
+    for(i=0; i< candidateList.length; i++) {
       var listItem = document.createElement('li');
       var candidate = candidateList[i];
-      console.log(candidate);
       $('#results').append(listItem);
-      var vote = $(listItem).html(candidate.name + ', ' + candidate.votes);
+      var vote = $(listItem).html(candidate.name + ': ' + candidate.votes);
     }
 
   });
